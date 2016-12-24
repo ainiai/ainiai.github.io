@@ -396,23 +396,24 @@ Quick">
 
     
       <div class="duoshuo" id="comments">
-    <div id="comment-box" ></div>
-    <div class="ds-thread" id="ds-thread" data-thread-key="2016/10/06/hello-world/" data-title="Hello World" data-url="http://yoursite.com/2016/10/06/hello-world/"></div>
-    <script>
-        var duoshuoQuery = {short_name:"ainiai"};
-        var loadComment = function(){
-            var d = document, s = d.createElement('script');
-            s.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-            s.async = true; s.charset = 'UTF-8';
-            (d.head || d.body).appendChild(s);
-        }
-
-        
+    <!-- 多说评论框 start -->
+    <div class="ds-thread" data-thread-key="2016/10/06/hello-world/" data-title="Hello World" data-url="http://yoursite.com/2016/10/06/hello-world/"></div>
+    <!-- 多说评论框 end -->
+    <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+    <script type="text/javascript">
+    var duoshuoQuery = {short_name:"ainiai"};
+    (function() {
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';ds.async = true;
+        ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0] 
+         || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
     </script>
-    
-    <script> loadComment(); </script>
-
+    <!-- 多说公共JS代码 end -->
 </div>
+
     
 
 
@@ -516,13 +517,30 @@ Quick">
              miniArchives: "a.post-list-link", 
             
              friends: "#js-friends a", 
-             socail: ".social a" 
+            
         }
         for (var x in oOpenInNew) {
             $(oOpenInNew[x]).attr("target", "_blank");
         }
     
 </script>
+
+    <script>
+        var originTitle = document.title;
+        var titleTime;
+        document.addEventListener("visibilitychange", function() {
+            if (document.hidden) {
+                document.title = "(つェ⊂) 我藏好了哦~ " + originTitle;
+                clearTimeout(titleTime);
+            }
+            else {
+                document.title = "(*´∇｀*) 被你发现啦~ " + originTitle;
+                titleTime = setTimeout(function() {
+                    document.title = originTitle;
+                }, 2000);
+            }
+        })
+    </script>
 
 <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
 </script>
